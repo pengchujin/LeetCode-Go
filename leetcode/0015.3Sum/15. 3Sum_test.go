@@ -27,12 +27,12 @@ func Test_Problem15(t *testing.T) {
 	qs := []question15{
 
 		question15{
-			para15{[]int{0, 0, 0}},
+			para15{[]int{-1,0,1,2,-1,-4}},
 			ans15{[][]int{[]int{0, 0, 0}}},
 		},
 
 		question15{
-			para15{[]int{-1, 0, 1, 2, -1, -4}},
+			para15{[]int{3,0,-2,-1,1,2}},
 			ans15{[][]int{[]int{-1, 0, 1}, []int{-1, -1, 2}}},
 		},
 

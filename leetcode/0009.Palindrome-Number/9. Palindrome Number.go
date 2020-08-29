@@ -1,20 +1,23 @@
 package leetcode
 
-import "strconv"
+// import "strconv"
 
 func isPalindrome(x int) bool {
+	y := x
+	z := 0
 	if x < 0 {
-		return false
+			return false
 	}
 	if x < 10 {
+			return true
+	}
+	for y > 0 {
+		i := y%10
+		y = y/10;
+		z = z*10 + i
+	}
+	if (z == x) {
 		return true
 	}
-	s := strconv.Itoa(x)
-	length := len(s)
-	for i := 0; i <= length/2; i++ {
-		if s[i] != s[length-1-i] {
-			return false
-		}
-	}
-	return true
+	return false
 }

@@ -1,21 +1,21 @@
 package leetcode
 
-func maxArea(height []int) int {
-	max, start, end := 0, 0, len(height)-1
-	for start < end {
-		width := end - start
-		high := 0
-		if height[start] < height[end] {
-			high = height[start]
-			start++
-		} else {
-			high = height[end]
-			end--
-		}
+// import (
+// 	"fmt"
+// )
 
-		temp := width * high
-		if temp > max {
-			max = temp
+func maxArea(height []int) int {
+	max := 0
+	l := 0
+	for i := 0; i < (len(height) -1); i++ {
+		for k := i+1; k < len(height); k++ {
+			 l = height[k]
+			 if height[i] <= height[k] {
+				 l = height[i]
+			 }
+			 if l * (k-i) > max {
+				 max = l * (k-i)
+			 }
 		}
 	}
 	return max

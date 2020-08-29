@@ -1,5 +1,9 @@
 package leetcode
 
+import (
+	"fmt"
+)
+
 var (
 	letterMap = []string{
 		" ",    //0
@@ -16,24 +20,30 @@ var (
 	res = []string{}
 )
 
-func letterCombinations(digits string) []string {
-	if digits == "" {
-		return []string{}
+func letterCombinations(digits string) []string {	
+	if len(digits) < 1 {
+		return res
 	}
-	res = []string{}
-	findCombination(&digits, 0, "")
-	return res
-}
+	tmp := []string{}
+	for k := 0; k < len(letterMap[digits[0] - '0']); k++ {
+		tmp = append(tmp, string(letterMap[digits[0] - '0'][k]))
+	}
 
-func findCombination(digits *string, index int, s string) {
-	if index == len(*digits) {
-		res = append(res, s)
-		return
+	if len(digits) == 1 {
+		return tmp
 	}
-	num := (*digits)[index]
-	letter := letterMap[num-'0']
-	for i := 0; i < len(letter); i++ {
-		findCombination(digits, index+1, s+string(letter[i]))
+	
+	for j := 1; j < len(digits) ; j++ {
+		fmt.Println(j)
+		t := []string{}
+		fmt.Println(tmp)
+		for i := 0; i < len(tmp); i++ {
+			for k := 0; k < len(letterMap[digits[j] - '0']); k++ {
+				t = append(t, string(tmp[i]) + string(letterMap[digits[j] - '0'][k]))
+				fmt.Println(t, " ?")
+			}	
+		}
+		tmp = t
 	}
-	return
+	return tmp
 }
